@@ -1,0 +1,67 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#define max 100
+void push(int stack[] , int *top , int value ){
+    if(*top == max-1){
+        printf("STACK IS OVERFLOW!! \n");
+        return;
+    }
+    (*top)++;
+    stack[*top]=value;
+}
+int pop(int stack[] , int *top ){
+    if(*top == -1){
+        printf("STACK IS UNDERFLOW!! \n");
+        return -1;
+    }
+    int temp = stack[*top];
+    (*top)--;
+    return temp;
+}
+int peek(int stack[] , int top ){
+    if(top == -1){
+        printf("STACK IS UNDERFLOW!! \n");
+        return -1;
+    }
+    return stack[top];
+}
+int isEmpty(int stack[] ,int top){
+   if(top == -1) return 1;
+   else return 0;
+}
+int isFull(int stack[] ,int top){
+    if(top == max -1) return 1;
+   else return 0;
+}
+void displayStack(int stack[] , int top ){
+    if(top == -1 ){
+        printf("List is Empty \n");
+        return;
+    }
+    for(int i=0; i<=top; i++){
+        printf("%d ",stack[i]);
+    }
+    printf("\n");
+}
+int main() {
+    int stack[100];
+    int top = -1;
+    push(stack , &top , 3);
+    displayStack(stack,top);
+    push(stack , &top , 4);
+    push(stack , &top , 1);
+    displayStack(stack,top);
+    pop(stack,&top);
+    displayStack(stack,top);
+    printf("This item is at top of stack %d \n",peek(stack,top));
+    printf("%d\n",isFull(stack , top));
+    printf("%d\n",isEmpty(stack , top));
+    pop(stack,&top);
+    pop(stack,&top);
+    displayStack(stack,top);
+    printf("%d\n",isEmpty(stack , top));
+    
+    
+
+    return 0;
+}
