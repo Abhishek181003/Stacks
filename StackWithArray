@@ -46,21 +46,29 @@ void displayStack(int stack[] , int top ){
 int main() {
     int stack[100];
     int top = -1;
-    push(stack , &top , 3);
-    displayStack(stack,top);
-    push(stack , &top , 4);
-    push(stack , &top , 1);
-    displayStack(stack,top);
-    pop(stack,&top);
-    displayStack(stack,top);
-    printf("This item is at top of stack %d \n",peek(stack,top));
-    printf("%d\n",isFull(stack , top));
-    printf("%d\n",isEmpty(stack , top));
-    pop(stack,&top);
-    pop(stack,&top);
-    displayStack(stack,top);
-    printf("%d\n",isEmpty(stack , top));
-    
+    while(1){
+        printf("Choose the option:\n1.Push\n2.pop\n3.peek\n4.Display\n5.Exit\n");
+        int choice;
+        scanf("%d",&choice);
+        switch(choice){
+            case 1: printf("Enter the item : ");
+                    int item;
+                    scanf("%d",&item);
+                    push(stack,&top,item);
+                    break;
+            case 2: item = pop(stack,&top);
+                    printf("Deleted item is %d\n",item);
+                    break;
+            case 3: printf("%d\n",peek(stack,top));
+                    break;
+            case 4: displayStack(stack,top);
+                    break;
+            case 5: printf("THank you");
+                    return 0;
+            default:printf("Invalid Input\n");
+            
+        }
+    }
     
 
     return 0;
